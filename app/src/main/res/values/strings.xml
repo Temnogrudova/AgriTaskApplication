@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AgriTask</string>
+    <string name="item_text">Item %06d</string>
+    <string name="item_is_longer_limit_text">Item 999999+</string>
+</resources>
