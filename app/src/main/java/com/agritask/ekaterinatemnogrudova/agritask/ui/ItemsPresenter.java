@@ -14,13 +14,13 @@ public class ItemsPresenter implements ItemsContract.Presenter {
     private ItemsContract.View mView;
     private Disposable mDisposable;
     private IScheduler mScheduler;
-    private ItemsService mPixabayService;
+    private ItemsService mItemsService;
 
     public ItemsPresenter(ItemsContract.View view, ItemsService pixabayService, IScheduler scheduler) {
         mView = view;
         mView.setPresenter(this);
         mScheduler = scheduler;
-        mPixabayService = pixabayService;
+        mItemsService = pixabayService;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ItemsPresenter implements ItemsContract.Presenter {
 
     @Override
     public void getItems(int offset) {
-        mDisposable = mPixabayService.getItems(offset, REQUEST_LIMIT)
+        mDisposable = mItemsService.getItems(offset, REQUEST_LIMIT)
                     .subscribeOn(mScheduler.io())
                     .observeOn(mScheduler.ui()).subscribeWith(new DisposableObserver<List<Item>>() {
             @Override
