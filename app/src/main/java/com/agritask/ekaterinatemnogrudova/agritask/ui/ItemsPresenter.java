@@ -16,11 +16,11 @@ public class ItemsPresenter implements ItemsContract.Presenter {
     private IScheduler mScheduler;
     private ItemsService mItemsService;
 
-    public ItemsPresenter(ItemsContract.View view, ItemsService pixabayService, IScheduler scheduler) {
+    public ItemsPresenter(ItemsContract.View view, ItemsService itemsService, IScheduler scheduler) {
         mView = view;
         mView.setPresenter(this);
         mScheduler = scheduler;
-        mItemsService = pixabayService;
+        mItemsService = itemsService;
     }
 
     @Override
